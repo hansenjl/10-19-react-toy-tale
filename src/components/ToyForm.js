@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {addToy} from './actions/toyActions'
+import {createToy} from '../actions/toyActions'
 
 
 class ToyForm extends React.Component{
@@ -26,23 +26,8 @@ class ToyForm extends React.Component{
        
         // set up our toy object 
         const toy = {...this.state, likes: 0}
-        console.log(toy)
         
-        // send a fetch request 
-        const url ="http://localhost:3000/toys"
-        const configObj = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accepts": "application/json"
-            },
-            body: JSON.stringify(toy)
-        }
-        fetch(url, configObj)
-        .then(res => res.json())
-        .then(json => {
-           this.props.addToy(json)
-        })
+        this.props.createToy(toy)
         // save to our current state of toys 
         this.setState({
            name: "",
@@ -63,4 +48,4 @@ class ToyForm extends React.Component{
     }
 }
 
-export default connect(null, {addToy})(ToyForm)
+export default connect(null, {createToy})(ToyForm)

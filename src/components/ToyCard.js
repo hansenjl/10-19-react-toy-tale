@@ -1,11 +1,7 @@
 
 
 function ToyCard(props){
-    // const {id, image, name} = props.toy // destructuring is an option
 
-    // const handleClick = (e) => {
-    //     props.increaseLikes(props.id)
-    // }
 
     return(
         <div className="card" id={`toy-${props.toy.id}`}>
